@@ -14,99 +14,103 @@
   --bg:#ffffff;
   --green:#1a6b4a;
   --green-l:#eaf4ef;
+  --green-d:#0d3d28;
 }
 html{scroll-behavior:smooth;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue','Segoe UI',sans-serif;background:var(--bg);color:var(--black);line-height:1.6;}
 
 /* ===== NAV ===== */
-nav{position:fixed;top:0;left:0;right:0;height:56px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;z-index:100;}
-.nav-name{font-size:15px;font-weight:600;letter-spacing:-.3px;color:var(--black);text-decoration:none;}
-.nav-links{display:flex;gap:1.5rem;}
-.nav-links a{font-size:13px;color:var(--gray);text-decoration:none;transition:color .2s;}
-.nav-links a:hover{color:var(--black);}
+nav{position:fixed;top:0;left:0;right:0;height:52px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;z-index:200;}
+.nav-name{font-size:14px;font-weight:600;letter-spacing:-.2px;color:var(--black);text-decoration:none;}
+.nav-tabs{display:flex;gap:0;}
+.nav-tab{font-size:13px;color:var(--gray);text-decoration:none;padding:.4rem 1rem;border-radius:6px;transition:all .2s;cursor:pointer;border:none;background:none;font-family:inherit;}
+.nav-tab:hover{color:var(--black);background:#f5f5f5;}
+.nav-tab.active{color:var(--green);font-weight:500;}
 
-/* ===== HERO ===== */
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 2rem;max-width:720px;margin:0 auto;}
-.hero-tag{display:inline-block;font-size:12px;font-weight:500;color:var(--green);background:var(--green-l);padding:4px 12px;border-radius:20px;margin-bottom:1.5rem;letter-spacing:.5px;}
-.hero h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:700;letter-spacing:-1.5px;line-height:1.15;margin-bottom:1.25rem;color:var(--black);}
+/* ===== PAGES ===== */
+.page{display:none;padding-top:52px;min-height:100vh;}
+.page.active{display:block;}
+
+/* ===== HOME PAGE ===== */
+.hero{padding:4rem 2rem 2.5rem;max-width:680px;margin:0 auto;}
+.hero-tag{display:inline-block;font-size:11px;font-weight:600;color:var(--green);background:var(--green-l);padding:3px 10px;border-radius:20px;margin-bottom:1.25rem;letter-spacing:.8px;text-transform:uppercase;}
+.hero h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;letter-spacing:-1px;line-height:1.2;margin-bottom:.75rem;}
 .hero h1 span{color:var(--green);}
-/* ↓ 這行是你的一句話介紹，隨時可以修改 */
-.hero-desc{font-size:1.05rem;color:var(--gray);max-width:480px;line-height:1.75;margin-bottom:2rem;}
-.hero-cta{display:flex;gap:12px;flex-wrap:wrap;}
-.btn-primary{display:inline-block;padding:10px 22px;background:var(--black);color:white;border-radius:6px;font-size:14px;font-weight:500;text-decoration:none;transition:background .2s;}
-.btn-primary:hover{background:#333;}
-.btn-secondary{display:inline-block;padding:10px 22px;border:1px solid var(--border);color:var(--gray);border-radius:6px;font-size:14px;font-weight:500;text-decoration:none;transition:all .2s;}
-.btn-secondary:hover{border-color:var(--black);color:var(--black);}
-.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-size:12px;color:var(--lightgray);display:flex;flex-direction:column;align-items:center;gap:6px;}
-.hero-scroll::after{content:'';width:1px;height:40px;background:var(--border);}
+.hero-desc{font-size:.95rem;color:var(--gray);max-width:500px;line-height:1.8;margin-bottom:.5rem;}
 
-/* ===== SECTIONS ===== */
-section{padding:5rem 2rem;max-width:720px;margin:0 auto;}
-.section-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:.75rem;}
-.section-title{font-size:1.75rem;font-weight:700;letter-spacing:-.5px;margin-bottom:2rem;color:var(--black);}
+/* ===== PROJECTS SECTION ===== */
+.projects-section{padding:0 2rem 4rem;max-width:680px;margin:0 auto;}
+.section-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
 
-/* ===== ABOUT ===== */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
-.about-item{padding:1.25rem;border:1px solid var(--border);border-radius:10px;}
-.about-item-label{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:.5rem;}
-.about-item-val{font-size:14px;color:var(--black);line-height:1.6;}
-
-/* ===== SKILLS ===== */
-.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
-.skill-card{padding:1.25rem;border:1px solid var(--border);border-radius:10px;transition:border-color .2s;}
-.skill-card:hover{border-color:var(--green);}
-.skill-icon{font-size:20px;margin-bottom:.5rem;}
-.skill-name{font-size:13px;font-weight:600;color:var(--black);margin-bottom:.4rem;}
-.skill-desc{font-size:12px;color:var(--gray);line-height:1.5;}
-
-/* ===== PROJECTS ===== */
-.project-card{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1.25rem;transition:box-shadow .2s;}
-.project-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.07);}
-.project-header{padding:1.5rem;border-bottom:1px solid var(--border);}
-.project-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.75rem;}
-.project-tag{font-size:11px;padding:2px 8px;border-radius:4px;background:var(--green-l);color:var(--green);font-weight:500;}
-.project-name{font-size:1.1rem;font-weight:700;letter-spacing:-.3px;margin-bottom:.4rem;}
-.project-desc{font-size:13px;color:var(--gray);line-height:1.6;}
-.project-body{padding:1.25rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;}
-.project-stat{text-align:center;}
-.project-stat-num{font-size:1.5rem;font-weight:700;color:var(--green);}
-.project-stat-label{font-size:11px;color:var(--lightgray);margin-top:2px;}
-.project-footer{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
-.project-status{font-size:12px;color:var(--lightgray);}
-.project-link{font-size:13px;font-weight:500;color:var(--green);text-decoration:none;display:flex;align-items:center;gap:4px;}
+.project-card{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1rem;transition:box-shadow .2s,transform .2s;}
+.project-card:hover{box-shadow:0 4px 24px rgba(0,0,0,.07);transform:translateY(-1px);}
+.project-inner{padding:1.5rem;}
+.project-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:.75rem;}
+.project-tag{font-size:10px;padding:2px 8px;border-radius:4px;background:var(--green-l);color:var(--green);font-weight:600;letter-spacing:.2px;}
+.project-name{font-size:1.05rem;font-weight:700;letter-spacing:-.3px;margin-bottom:.4rem;}
+.project-desc{font-size:13px;color:var(--gray);line-height:1.65;margin-bottom:1rem;}
+.project-stats{display:flex;gap:1.5rem;margin-bottom:1rem;padding:.75rem;background:#fafafa;border-radius:8px;}
+.project-stat-num{font-size:1.2rem;font-weight:700;color:var(--green);}
+.project-stat-label{font-size:10px;color:var(--lightgray);margin-top:1px;}
+.project-footer{display:flex;justify-content:space-between;align-items:center;padding-top:.75rem;border-top:1px solid var(--border);}
+.project-status{font-size:11px;color:var(--lightgray);display:flex;align-items:center;gap:4px;}
+.status-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;flex-shrink:0;}
+.project-link{font-size:13px;font-weight:500;color:var(--green);text-decoration:none;}
 .project-link:hover{text-decoration:underline;}
 
-/* ===== TIMELINE ===== */
-.timeline{position:relative;padding-left:1.5rem;}
-.timeline::before{content:'';position:absolute;left:0;top:6px;bottom:0;width:1px;background:var(--border);}
-.tl-item{position:relative;margin-bottom:2rem;}
-.tl-item::before{content:'';position:absolute;left:-1.5rem;top:6px;width:7px;height:7px;border-radius:50%;background:var(--border);border:2px solid var(--bg);}
-.tl-item.active::before{background:var(--green);}
-.tl-period{font-size:11px;color:var(--lightgray);font-weight:500;margin-bottom:.3rem;}
-.tl-role{font-size:14px;font-weight:600;color:var(--black);margin-bottom:.2rem;}
-.tl-company{font-size:13px;color:var(--gray);}
-.tl-desc{font-size:12px;color:var(--lightgray);margin-top:.4rem;line-height:1.6;}
+.design-notes{margin-top:.75rem;padding:.75rem;background:#fafafa;border-radius:8px;border-left:2px solid var(--green);}
+.design-note-label{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;}
+.design-note-item{font-size:12px;color:var(--gray);line-height:1.6;display:flex;gap:6px;}
+.design-note-item::before{content:'·';color:var(--green);flex-shrink:0;}
+
+/* ===== ABOUT PAGE ===== */
+.about-page{padding:2.5rem 2rem 4rem;max-width:680px;margin:0 auto;}
+.about-intro{margin-bottom:2.5rem;}
+.about-intro p{font-size:.95rem;color:var(--gray);line-height:1.85;margin-bottom:.75rem;}
+.about-intro strong{color:var(--black);}
+
+.about-section{margin-bottom:2.5rem;}
+.about-section-title{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);}
+
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+.skill-item{padding:.9rem 1rem;border:1px solid var(--border);border-radius:8px;}
+.skill-name{font-size:13px;font-weight:600;color:var(--black);margin-bottom:.3rem;}
+.skill-desc{font-size:12px;color:var(--gray);line-height:1.5;}
+
+.timeline{padding-left:1.25rem;border-left:1px solid var(--border);}
+.tl-item{position:relative;margin-bottom:1.75rem;padding-left:1rem;}
+.tl-item::before{content:'';position:absolute;left:-1.375rem;top:5px;width:7px;height:7px;border-radius:50%;background:var(--border);border:2px solid white;}
+.tl-item.current::before{background:var(--green);}
+.tl-period{font-size:11px;color:var(--lightgray);margin-bottom:.2rem;}
+.tl-role{font-size:14px;font-weight:600;color:var(--black);margin-bottom:.1rem;}
+.tl-company{font-size:13px;color:var(--gray);margin-bottom:.3rem;}
+.tl-desc{font-size:12px;color:var(--lightgray);line-height:1.6;}
+
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+.info-item{padding:.75rem 1rem;border:1px solid var(--border);border-radius:8px;}
+.info-label{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:.3rem;}
+.info-val{font-size:13px;color:var(--black);line-height:1.6;}
+
+/* ===== PM FRAMEWORK ===== */
+.pm-framework{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1rem;}
+.pm-item{display:flex;gap:.75rem;}
+.pm-label{font-size:10px;font-weight:600;letter-spacing:.4px;text-transform:uppercase;color:var(--green);white-space:nowrap;padding-top:2px;min-width:56px;}
+.pm-text{font-size:13px;color:var(--gray);line-height:1.65;}
+.pm-future .pm-label{color:var(--lightgray);}
+.pm-future .pm-text{color:var(--lightgray);}
 
 /* ===== CONTACT ===== */
-.contact-box{border:1px solid var(--border);border-radius:12px;padding:2.5rem;text-align:center;}
-.contact-box h3{font-size:1.3rem;font-weight:700;letter-spacing:-.3px;margin-bottom:.5rem;}
-.contact-box p{font-size:14px;color:var(--gray);margin-bottom:1.5rem;}
-.contact-email{display:inline-block;font-size:14px;color:var(--green);text-decoration:none;border-bottom:1px solid var(--green-l);padding-bottom:1px;}
-.contact-email:hover{border-color:var(--green);}
+.contact-strip{background:var(--green-d);color:white;text-align:center;padding:2.5rem 2rem;}
+.contact-strip p{font-size:13px;opacity:.75;margin-bottom:.75rem;}
+.contact-email{color:white;font-size:15px;font-weight:500;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px;}
 
-/* ===== FOOTER ===== */
-footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;font-size:12px;color:var(--lightgray);}
-
-/* ===== DIVIDER ===== */
-.divider{width:100%;height:1px;background:var(--border);max-width:720px;margin:0 auto;}
+footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgray);border-top:1px solid var(--border);}
 
 @media(max-width:600px){
-  .about-grid{grid-template-columns:1fr;}
-  .skills-grid{grid-template-columns:1fr 1fr;}
-  .project-body{grid-template-columns:1fr 1fr;}
   nav{padding:0 1rem;}
-  .hero{padding:0 1.25rem;}
-  section{padding:3.5rem 1.25rem;}
+  .hero,.projects-section,.about-page{padding-left:1.25rem;padding-right:1.25rem;}
+  .skills-grid,.info-grid{grid-template-columns:1fr;}
+  .project-stats{gap:1rem;}
 }
 </style>
 </head>
@@ -114,203 +118,263 @@ footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;
 
 <!-- NAV -->
 <nav>
-  <a class="nav-name" href="#">Even Chen</a>
-  <div class="nav-links">
-    <a href="#projects">作品</a>
-    <a href="#experience">經歷</a>
-    <a href="#contact">聯絡</a>
+  <a class="nav-name" href="#" onclick="showPage('home')">Even Chen</a>
+  <div class="nav-tabs">
+    <button class="nav-tab active" id="tab-home" onclick="showPage('home')">首頁</button>
+    <button class="nav-tab" id="tab-about" onclick="showPage('about')">關於我</button>
   </div>
 </nav>
 
-<!-- HERO -->
-<div style="position:relative;">
+<!-- ===== HOME PAGE ===== -->
+<div class="page active" id="page-home">
+
   <div class="hero">
-    <div class="hero-tag">Product · Data · Marketing</div>
-    <h1>Even Chen<br><span>產品 × 數據 × 行銷</span></h1>
-    <!-- ↓ 修改這行來調整你的一句話介紹 -->
-    <p class="hero-desc">結合審計背景與數據分析經驗，以用戶需求為核心，打造有實際成效的產品與策略。</p>
-    <div class="hero-cta">
-      <a href="#projects" class="btn-primary">查看作品</a>
-      <a href="#contact" class="btn-secondary">與我聯絡</a>
-    </div>
+    <div class="hero-tag">數據 · 行銷 · 策略</div>
+    <h1>Even Chen<br><span>11 年跨產業經驗</span></h1>
+    <!-- ↓ 這行是一句話介紹，可隨時配合履歷調整 -->
+    <p class="hero-desc">擅長拆解抽象目標與營運混亂，轉譯成可執行的系統。將市場與使用者洞察轉為策略方向與差異化定位，跨部門整合、推動執行落地。</p>
   </div>
-  <div class="hero-scroll">向下探索</div>
-</div>
 
-<div class="divider"></div>
+  <div class="projects-section">
+    <div class="section-label">作品</div>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-label">About</div>
-  <div class="section-title">關於我</div>
-  <div class="about-grid">
-    <div class="about-item">
-      <div class="about-item-label">背景</div>
-      <div class="about-item-val">KPMG 審計 → 數據分析 → 行銷策略<br>跨域整合，擅長從數字找洞察</div>
-    </div>
-    <div class="about-item">
-      <div class="about-item-label">現況</div>
-      <div class="about-item-val">積極尋找 PMM / PM 職缺<br>同時打造個人健康管理產品</div>
-    </div>
-    <div class="about-item">
-      <div class="about-item-label">學歷</div>
-      <div class="about-item-val">成功大學 AMBA<br>EM Normandie 交換</div>
-    </div>
-    <div class="about-item">
-      <div class="about-item-label">興趣</div>
-      <div class="about-item-val">跑步・羽球・舞蹈<br>Africa / Popping 舞風</div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label">Skills</div>
-  <div class="section-title">核心能力</div>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-icon">📊</div>
-      <div class="skill-name">數據分析</div>
-      <div class="skill-desc">Google Sheet、數據收集設計、用戶行為追蹤</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🎯</div>
-      <div class="skill-name">產品思維</div>
-      <div class="skill-desc">從用戶痛點出發，定義需求、迭代產品</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">📣</div>
-      <div class="skill-name">行銷策略</div>
-      <div class="skill-desc">媒體規劃、品牌定位、跨境市場經驗</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🤝</div>
-      <div class="skill-name">團隊領導</div>
-      <div class="skill-desc">帶領數據分析團隊，跨部門協作</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🔍</div>
-      <div class="skill-name">審計稽核</div>
-      <div class="skill-desc">KPMG 四大背景，細節導向、風險意識</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🤖</div>
-      <div class="skill-name">AI 應用</div>
-      <div class="skill-desc">結合 AI 工具快速打造產品原型</div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label">Projects</div>
-  <div class="section-title">作品</div>
-
-  <!-- Project 1: Fitness App -->
-  <div class="project-card">
-    <div class="project-header">
-      <div class="project-tags">
-        <span class="project-tag">產品設計</span>
-        <span class="project-tag">數據追蹤</span>
-        <span class="project-tag">AI 應用</span>
-      </div>
-      <div class="project-name">個人健身復健 APP</div>
-      <div class="project-desc">發現自身有肩膀和膝蓋傷況，市面上缺乏針對復健需求的個人化工具，因此從用戶研究出發，結合 AI 協作，打造每日訓練工具。持續迭代中。</div>
-    </div>
-    <div class="project-body">
-      <div class="project-stat">
-        <div class="project-stat-num" id="trainDays">—</div>
-        <div class="project-stat-label">連續訓練天數</div>
-      </div>
-      <div class="project-stat">
-        <div class="project-stat-num">14</div>
-        <div class="project-stat-label">個訓練動作</div>
-      </div>
-      <div class="project-stat">
-        <div class="project-stat-num">↑</div>
-        <div class="project-stat-label">膝蓋不適明顯改善</div>
+    <!-- Project 1: Fitness App -->
+    <div class="project-card">
+      <div class="project-inner">
+        <div class="project-tags">
+          <span class="project-tag">產品設計</span>
+          <span class="project-tag">數據追蹤</span>
+          <span class="project-tag">AI 協作</span>
+        </div>
+        <div class="project-name">個人健身復健 APP</div>
+        <div class="pm-framework">
+          <div class="pm-item">
+            <div class="pm-label">問題定義</div>
+            <div class="pm-text">有特定傷況的人，像是術後復健或慢性關節不適，市面上的健身 APP 只能提供動作庫，沒辦法告訴你哪些動作適合你現在的狀況。我自己有右肩肌腱損傷和膝蓋問題，找不到合適的工具，就決定自己做一個。</div>
+          </div>
+          <div class="pm-item">
+            <div class="pm-label">洞察</div>
+            <div class="pm-text">原本以為需要的只是一套安全的動作清單。實際做了之後才發現，動作找到了，但要能持續做下去才是真正的難題。所以加了打卡和里程碑，讓自己看得到進度。</div>
+          </div>
+          <div class="pm-item">
+            <div class="pm-label">解決方案</div>
+            <div class="pm-text">固定課表減少每次要想做什麼的麻煩，打卡記錄讓進步有憑有據，雙週動作評估追蹤身體實際的改變。</div>
+          </div>
+          <div class="pm-item">
+            <div class="pm-label">結果</div>
+            <div class="pm-text">連續訓練 X 天，第 5 天起膝蓋不適就開始有感改善。</div>
+          </div>
+          <div class="pm-item pm-future">
+            <div class="pm-label">未來方向</div>
+            <div class="pm-text">目前為自己量身打造，但同樣有復健需求的族群其實不少，像是術後恢復期、中高齡想開始運動但怕受傷的人。下一步計畫開放多人使用，並根據不同傷況提供個人化課表。</div>
+          </div>
+        </div>
+        <div class="project-stats">
+          <div class="project-stat">
+            <div class="project-stat-num" id="trainDays">—</div>
+            <div class="project-stat-label">連續訓練天數</div>
+          </div>
+          <div class="project-stat">
+            <div class="project-stat-num">13</div>
+            <div class="project-stat-label">個訓練動作</div>
+          </div>
+          <div class="project-stat">
+            <div class="project-stat-num">↑</div>
+            <div class="project-stat-label">膝蓋不適明顯改善</div>
+          </div>
+        </div>
+        <div class="project-footer">
+          <div class="project-status"><div class="status-dot"></div>持續迭代中</div>
+          <a href="https://my-fitness-app-chi.vercel.app/" target="_blank" class="project-link">查看產品 →</a>
+        </div>
       </div>
     </div>
-    <div class="project-footer">
-      <span class="project-status">🟢 持續迭代中</span>
-      <a href="https://my-fitness-app-chi.vercel.app/" target="_blank" class="project-link">查看產品 →</a>
+
+    <!-- Project 2: Kansai Trip -->
+    <div class="project-card">
+      <div class="project-inner">
+        <div class="project-tags">
+          <span class="project-tag">視覺設計</span>
+          <span class="project-tag">使用者體驗</span>
+          <span class="project-tag">AI 協作</span>
+        </div>
+        <div class="project-name">關西賞楓行程網頁</div>
+        <div class="pm-framework">
+          <div class="pm-item">
+            <div class="pm-label">問題定義</div>
+            <div class="pm-text">帶五位 65 歲以上的長輩去日本，文字行程他們看不太懂，每次要解釋去哪、怎麼走都要花很多時間。</div>
+          </div>
+          <div class="pm-item">
+            <div class="pm-label">洞察</div>
+            <div class="pm-text">長輩不需要知道完整行程，只需要知道現在在哪、接下來去哪。另外家裡不只一個家庭單位，如果有個連結可以傳，各自的家人也能自己看，不用靠我一個一個說明。</div>
+          </div>
+          <div class="pm-item">
+            <div class="pm-label">解決方案</div>
+            <div class="pm-text">做成網頁，用衛星地圖讓位置感更直覺，配色選紅色呼應日本風格，icon 選簡潔好辨識的款式，讓長輩一看就懂。</div>
+          </div>
+          <div class="pm-item">
+            <div class="pm-label">結果</div>
+            <div class="pm-text">五位長輩全程可以自己查，幾個家庭各自用連結了解行程，不需要我在旁邊解釋。</div>
+          </div>
+        </div>
+        <div class="project-footer" style="margin-top:.75rem;">
+          <div class="project-status">5 位長輩使用者</div>
+          <a href="https://kobe-osaka-8ds-maple-trip.netlify.app/" target="_blank" class="project-link">查看網頁 →</a>
+        </div>
+      </div>
     </div>
+
+    <!-- Placeholder -->
+    <div style="border:1px dashed var(--border);border-radius:12px;padding:1.5rem;text-align:center;color:var(--lightgray);">
+      <div style="font-size:13px;">更多作品持續更新中...</div>
+    </div>
+
   </div>
 
-  <!-- More projects placeholder -->
-  <div style="border:1px dashed var(--border);border-radius:12px;padding:2rem;text-align:center;color:var(--lightgray);">
-    <div style="font-size:13px;">更多作品持續更新中...</div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-label">Experience</div>
-  <div class="section-title">工作經歷</div>
-  <div class="timeline">
-    <div class="tl-item active">
-      <div class="tl-period">2024 — 現在</div>
-      <div class="tl-role">獨立策略顧問</div>
-      <div class="tl-company">Gogo Partners</div>
-      <div class="tl-desc">獨立接案，提供策略諮詢服務</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-period">2020 — 2024</div>
-      <div class="tl-role">數據分析 / 團隊領導</div>
-      <div class="tl-company">eLand Information</div>
-      <div class="tl-desc">社群數據分析、帶領分析團隊、媒體規劃</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-period">2017 — 2020</div>
-      <div class="tl-role">審計員</div>
-      <div class="tl-company">KPMG Taiwan</div>
-      <div class="tl-desc">財務審計、風險評估、客戶報告</div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-label">Contact</div>
-  <div class="contact-box">
-    <h3>一起聊聊</h3>
+  <div class="contact-strip">
     <p>對我的作品有興趣，或想聊聊產品、數據、行銷？</p>
     <a href="mailto:evenggle5593@gmail.com" class="contact-email">evenggle5593@gmail.com</a>
   </div>
-</section>
+  <footer>© 2025 Even Chen · Built with intention, iterated daily.</footer>
+</div>
 
-<footer>
-  © 2025 Even Chen · Built with intention, iterated daily.
-</footer>
+<!-- ===== ABOUT PAGE ===== -->
+<div class="page" id="page-about">
+  <div class="about-page">
+
+    <div class="about-intro">
+      <p>我是 <strong>Even Chen</strong>，擁有 11 年跨產業經驗，橫跨社群數據分析、媒體行銷企劃與策略顧問。</p>
+      <p>擅長將抽象目標與複雜問題拆解為可執行的系統，並在不同產業間整合市場洞察、數據分析與跨部門溝通，推動策略落地。</p>
+      <p>目前積極尋找 <strong>PMM / PM</strong> 相關職缺，同時以迭代方式打造個人作品，將每日的實作與學習轉化為可展示的成果。</p>
+    </div>
+
+    <!-- 核心能力 -->
+    <div class="about-section">
+      <div class="about-section-title">核心能力</div>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <div class="skill-name">📊 數據分析</div>
+          <div class="skill-desc">社群口碑分析、Google Sheets、SQL、OpView、數據視覺化</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">📣 行銷策略</div>
+          <div class="skill-desc">媒體規劃、品牌定位、Persona 定義、差異化策略</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">⚙️ 流程自動化</div>
+          <div class="skill-desc">CRM 導入、Google Apps Script、行銷漏斗自動化</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">🤝 專案與團隊管理</div>
+          <div class="skill-desc">130+ 並行專案統籌、10 人團隊領導、跨部門整合</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">✍️ 內容與 SEO</div>
+          <div class="skill-desc">SEO 關鍵字架構、Topic Cluster、AEO 優化</div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-name">🤖 AI 應用</div>
+          <div class="skill-desc">AI 協作工具、產品原型快速打造、SOP 建立</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 工作經歷 -->
+    <div class="about-section">
+      <div class="about-section-title">工作經歷</div>
+      <div class="timeline">
+        <div class="tl-item current">
+          <div class="tl-period">2023/10 — 2026/03</div>
+          <div class="tl-role">策略顧問｜獨立顧問</div>
+          <div class="tl-company">Gogo Partners 合作</div>
+          <div class="tl-desc">行銷策略規劃、CRM 導入與自動化、SEO 內容架構、AI 協作 SOP 建立</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">2022/05 — 2023/03</div>
+          <div class="tl-role">媒體行銷企劃 副理</div>
+          <div class="tl-company">佳聖媒體行銷</div>
+          <div class="tl-desc">統籌壽險公司年度大型跨媒體活動（預算近 800 萬），達成 112% 活動目標</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">2021/05 — 2022/04</div>
+          <div class="tl-role">媒體行銷企劃 副理</div>
+          <div class="tl-company">香港商傳立媒體 台灣分公司</div>
+          <div class="tl-desc">珠寶品牌數位媒體規劃、健康產品多版位影音廣告操作</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">2017/02 — 2020/10</div>
+          <div class="tl-role">分析暨服務部 部門主管</div>
+          <div class="tl-company">意藍資訊（OpView）</div>
+          <div class="tl-desc">領導 10 人團隊，統籌 130+ 並行專案，達成 75% 年度續約率，成員評鑑 6.2/7</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-period">2015/08 — 2017/01</div>
+          <div class="tl-role">分析暨服務部 資料分析師</div>
+          <div class="tl-company">意藍資訊（OpView）</div>
+          <div class="tl-desc">完成 60+ 份中英分析報告，獲 2016 年度最佳報告肯定</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 學歷與其他 -->
+    <div class="about-section">
+      <div class="about-section-title">學歷、語言與工具</div>
+      <div class="info-grid">
+        <div class="info-item">
+          <div class="info-label">學歷</div>
+          <div class="info-val">國立成功大學 AMBA<br>EM Normandie（法）交換<br>國立成功大學 會計學士</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">語言</div>
+          <div class="info-val">中文・台語（母語）<br>英文（高級）<br>日文（N4–N3）</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">工具技能</div>
+          <div class="info-val">Excel / Google Sheets（進階）<br>Google Apps Script<br>SQL・HubSpot CRM<br>Google Trends・OpView</div>
+        </div>
+        <div class="info-item">
+          <div class="info-label">興趣</div>
+          <div class="info-val">語言學習・音樂<br>慢跑・羽球・健身</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="contact-strip">
+    <p>對我的背景有興趣，歡迎聯絡！</p>
+    <a href="mailto:evenggle5593@gmail.com" class="contact-email">evenggle5593@gmail.com</a>
+  </div>
+  <footer>© 2025 Even Chen · Built with intention, iterated daily.</footer>
+</div>
 
 <script>
-// Pull training streak from fitness app localStorage if on same browser
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// Pull training streak from fitness app localStorage
 try {
   const data = localStorage.getItem('fitness-app-v2');
-  if(data) {
+  if (data) {
     const parsed = JSON.parse(data);
     const dates = parsed.checkedDates || [];
-    // calc streak
     let streak = 0, cur = new Date();
     cur.setHours(0,0,0,0);
-    for(let i=0;i<90;i++){
+    for (let i = 0; i < 90; i++) {
       const ds = `${cur.getFullYear()}-${String(cur.getMonth()+1).padStart(2,'0')}-${String(cur.getDate()).padStart(2,'0')}`;
-      if(dates.includes(ds)){streak++;cur.setDate(cur.getDate()-1);}
-      else if(i===0){cur.setDate(cur.getDate()-1);}
+      if (dates.includes(ds)) { streak++; cur.setDate(cur.getDate()-1); }
+      else if (i === 0) { cur.setDate(cur.getDate()-1); }
       else break;
     }
-    if(streak > 0) document.getElementById('trainDays').textContent = streak;
-    else document.getElementById('trainDays').textContent = dates.length || '—';
+    const el = document.getElementById('trainDays');
+    if (el) el.textContent = streak > 0 ? streak : (dates.length || '—');
   }
-} catch(e){}
+} catch(e) {}
 </script>
 </body>
 </html>
