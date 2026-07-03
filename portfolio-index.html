@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Even Chen | Portfolio</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#111111;
+  --gray:#555555;
+  --lightgray:#999999;
+  --border:#e5e5e5;
+  --bg:#ffffff;
+  --green:#1a6b4a;
+  --green-l:#eaf4ef;
+}
+html{scroll-behavior:smooth;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue','Segoe UI',sans-serif;background:var(--bg);color:var(--black);line-height:1.6;}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;height:56px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;z-index:100;}
+.nav-name{font-size:15px;font-weight:600;letter-spacing:-.3px;color:var(--black);text-decoration:none;}
+.nav-links{display:flex;gap:1.5rem;}
+.nav-links a{font-size:13px;color:var(--gray);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--black);}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:0 2rem;max-width:720px;margin:0 auto;}
+.hero-tag{display:inline-block;font-size:12px;font-weight:500;color:var(--green);background:var(--green-l);padding:4px 12px;border-radius:20px;margin-bottom:1.5rem;letter-spacing:.5px;}
+.hero h1{font-size:clamp(2rem,6vw,3.5rem);font-weight:700;letter-spacing:-1.5px;line-height:1.15;margin-bottom:1.25rem;color:var(--black);}
+.hero h1 span{color:var(--green);}
+/* ↓ 這行是你的一句話介紹，隨時可以修改 */
+.hero-desc{font-size:1.05rem;color:var(--gray);max-width:480px;line-height:1.75;margin-bottom:2rem;}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{display:inline-block;padding:10px 22px;background:var(--black);color:white;border-radius:6px;font-size:14px;font-weight:500;text-decoration:none;transition:background .2s;}
+.btn-primary:hover{background:#333;}
+.btn-secondary{display:inline-block;padding:10px 22px;border:1px solid var(--border);color:var(--gray);border-radius:6px;font-size:14px;font-weight:500;text-decoration:none;transition:all .2s;}
+.btn-secondary:hover{border-color:var(--black);color:var(--black);}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-size:12px;color:var(--lightgray);display:flex;flex-direction:column;align-items:center;gap:6px;}
+.hero-scroll::after{content:'';width:1px;height:40px;background:var(--border);}
+
+/* ===== SECTIONS ===== */
+section{padding:5rem 2rem;max-width:720px;margin:0 auto;}
+.section-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:.75rem;}
+.section-title{font-size:1.75rem;font-weight:700;letter-spacing:-.5px;margin-bottom:2rem;color:var(--black);}
+
+/* ===== ABOUT ===== */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.about-item{padding:1.25rem;border:1px solid var(--border);border-radius:10px;}
+.about-item-label{font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:.5rem;}
+.about-item-val{font-size:14px;color:var(--black);line-height:1.6;}
+
+/* ===== SKILLS ===== */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.skill-card{padding:1.25rem;border:1px solid var(--border);border-radius:10px;transition:border-color .2s;}
+.skill-card:hover{border-color:var(--green);}
+.skill-icon{font-size:20px;margin-bottom:.5rem;}
+.skill-name{font-size:13px;font-weight:600;color:var(--black);margin-bottom:.4rem;}
+.skill-desc{font-size:12px;color:var(--gray);line-height:1.5;}
+
+/* ===== PROJECTS ===== */
+.project-card{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1.25rem;transition:box-shadow .2s;}
+.project-card:hover{box-shadow:0 4px 20px rgba(0,0,0,.07);}
+.project-header{padding:1.5rem;border-bottom:1px solid var(--border);}
+.project-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:.75rem;}
+.project-tag{font-size:11px;padding:2px 8px;border-radius:4px;background:var(--green-l);color:var(--green);font-weight:500;}
+.project-name{font-size:1.1rem;font-weight:700;letter-spacing:-.3px;margin-bottom:.4rem;}
+.project-desc{font-size:13px;color:var(--gray);line-height:1.6;}
+.project-body{padding:1.25rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;}
+.project-stat{text-align:center;}
+.project-stat-num{font-size:1.5rem;font-weight:700;color:var(--green);}
+.project-stat-label{font-size:11px;color:var(--lightgray);margin-top:2px;}
+.project-footer{padding:1rem 1.5rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;}
+.project-status{font-size:12px;color:var(--lightgray);}
+.project-link{font-size:13px;font-weight:500;color:var(--green);text-decoration:none;display:flex;align-items:center;gap:4px;}
+.project-link:hover{text-decoration:underline;}
+
+/* ===== TIMELINE ===== */
+.timeline{position:relative;padding-left:1.5rem;}
+.timeline::before{content:'';position:absolute;left:0;top:6px;bottom:0;width:1px;background:var(--border);}
+.tl-item{position:relative;margin-bottom:2rem;}
+.tl-item::before{content:'';position:absolute;left:-1.5rem;top:6px;width:7px;height:7px;border-radius:50%;background:var(--border);border:2px solid var(--bg);}
+.tl-item.active::before{background:var(--green);}
+.tl-period{font-size:11px;color:var(--lightgray);font-weight:500;margin-bottom:.3rem;}
+.tl-role{font-size:14px;font-weight:600;color:var(--black);margin-bottom:.2rem;}
+.tl-company{font-size:13px;color:var(--gray);}
+.tl-desc{font-size:12px;color:var(--lightgray);margin-top:.4rem;line-height:1.6;}
+
+/* ===== CONTACT ===== */
+.contact-box{border:1px solid var(--border);border-radius:12px;padding:2.5rem;text-align:center;}
+.contact-box h3{font-size:1.3rem;font-weight:700;letter-spacing:-.3px;margin-bottom:.5rem;}
+.contact-box p{font-size:14px;color:var(--gray);margin-bottom:1.5rem;}
+.contact-email{display:inline-block;font-size:14px;color:var(--green);text-decoration:none;border-bottom:1px solid var(--green-l);padding-bottom:1px;}
+.contact-email:hover{border-color:var(--green);}
+
+/* ===== FOOTER ===== */
+footer{border-top:1px solid var(--border);padding:1.5rem 2rem;text-align:center;font-size:12px;color:var(--lightgray);}
+
+/* ===== DIVIDER ===== */
+.divider{width:100%;height:1px;background:var(--border);max-width:720px;margin:0 auto;}
+
+@media(max-width:600px){
+  .about-grid{grid-template-columns:1fr;}
+  .skills-grid{grid-template-columns:1fr 1fr;}
+  .project-body{grid-template-columns:1fr 1fr;}
+  nav{padding:0 1rem;}
+  .hero{padding:0 1.25rem;}
+  section{padding:3.5rem 1.25rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-name" href="#">Even Chen</a>
+  <div class="nav-links">
+    <a href="#projects">作品</a>
+    <a href="#experience">經歷</a>
+    <a href="#contact">聯絡</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="position:relative;">
+  <div class="hero">
+    <div class="hero-tag">Product · Data · Marketing</div>
+    <h1>Even Chen<br><span>產品 × 數據 × 行銷</span></h1>
+    <!-- ↓ 修改這行來調整你的一句話介紹 -->
+    <p class="hero-desc">結合審計背景與數據分析經驗，以用戶需求為核心，打造有實際成效的產品與策略。</p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">查看作品</a>
+      <a href="#contact" class="btn-secondary">與我聯絡</a>
+    </div>
+  </div>
+  <div class="hero-scroll">向下探索</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="section-title">關於我</div>
+  <div class="about-grid">
+    <div class="about-item">
+      <div class="about-item-label">背景</div>
+      <div class="about-item-val">KPMG 審計 → 數據分析 → 行銷策略<br>跨域整合，擅長從數字找洞察</div>
+    </div>
+    <div class="about-item">
+      <div class="about-item-label">現況</div>
+      <div class="about-item-val">積極尋找 PMM / PM 職缺<br>同時打造個人健康管理產品</div>
+    </div>
+    <div class="about-item">
+      <div class="about-item-label">學歷</div>
+      <div class="about-item-val">成功大學 AMBA<br>EM Normandie 交換</div>
+    </div>
+    <div class="about-item">
+      <div class="about-item-label">興趣</div>
+      <div class="about-item-val">跑步・羽球・舞蹈<br>Africa / Popping 舞風</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Skills</div>
+  <div class="section-title">核心能力</div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">數據分析</div>
+      <div class="skill-desc">Google Sheet、數據收集設計、用戶行為追蹤</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🎯</div>
+      <div class="skill-name">產品思維</div>
+      <div class="skill-desc">從用戶痛點出發，定義需求、迭代產品</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📣</div>
+      <div class="skill-name">行銷策略</div>
+      <div class="skill-desc">媒體規劃、品牌定位、跨境市場經驗</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤝</div>
+      <div class="skill-name">團隊領導</div>
+      <div class="skill-desc">帶領數據分析團隊，跨部門協作</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔍</div>
+      <div class="skill-name">審計稽核</div>
+      <div class="skill-desc">KPMG 四大背景，細節導向、風險意識</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-name">AI 應用</div>
+      <div class="skill-desc">結合 AI 工具快速打造產品原型</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Projects</div>
+  <div class="section-title">作品</div>
+
+  <!-- Project 1: Fitness App -->
+  <div class="project-card">
+    <div class="project-header">
+      <div class="project-tags">
+        <span class="project-tag">產品設計</span>
+        <span class="project-tag">數據追蹤</span>
+        <span class="project-tag">AI 應用</span>
+      </div>
+      <div class="project-name">個人健身復健 APP</div>
+      <div class="project-desc">發現自身有肩膀和膝蓋傷況，市面上缺乏針對復健需求的個人化工具，因此從用戶研究出發，結合 AI 協作，打造每日訓練工具。持續迭代中。</div>
+    </div>
+    <div class="project-body">
+      <div class="project-stat">
+        <div class="project-stat-num" id="trainDays">—</div>
+        <div class="project-stat-label">連續訓練天數</div>
+      </div>
+      <div class="project-stat">
+        <div class="project-stat-num">14</div>
+        <div class="project-stat-label">個訓練動作</div>
+      </div>
+      <div class="project-stat">
+        <div class="project-stat-num">↑</div>
+        <div class="project-stat-label">膝蓋不適明顯改善</div>
+      </div>
+    </div>
+    <div class="project-footer">
+      <span class="project-status">🟢 持續迭代中</span>
+      <a href="https://my-fitness-app-chi.vercel.app/" target="_blank" class="project-link">查看產品 →</a>
+    </div>
+  </div>
+
+  <!-- More projects placeholder -->
+  <div style="border:1px dashed var(--border);border-radius:12px;padding:2rem;text-align:center;color:var(--lightgray);">
+    <div style="font-size:13px;">更多作品持續更新中...</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <div class="section-title">工作經歷</div>
+  <div class="timeline">
+    <div class="tl-item active">
+      <div class="tl-period">2024 — 現在</div>
+      <div class="tl-role">獨立策略顧問</div>
+      <div class="tl-company">Gogo Partners</div>
+      <div class="tl-desc">獨立接案，提供策略諮詢服務</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">2020 — 2024</div>
+      <div class="tl-role">數據分析 / 團隊領導</div>
+      <div class="tl-company">eLand Information</div>
+      <div class="tl-desc">社群數據分析、帶領分析團隊、媒體規劃</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-period">2017 — 2020</div>
+      <div class="tl-role">審計員</div>
+      <div class="tl-company">KPMG Taiwan</div>
+      <div class="tl-desc">財務審計、風險評估、客戶報告</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <div class="contact-box">
+    <h3>一起聊聊</h3>
+    <p>對我的作品有興趣，或想聊聊產品、數據、行銷？</p>
+    <a href="mailto:evenggle5593@gmail.com" class="contact-email">evenggle5593@gmail.com</a>
+  </div>
+</section>
+
+<footer>
+  © 2025 Even Chen · Built with intention, iterated daily.
+</footer>
+
+<script>
+// Pull training streak from fitness app localStorage if on same browser
+try {
+  const data = localStorage.getItem('fitness-app-v2');
+  if(data) {
+    const parsed = JSON.parse(data);
+    const dates = parsed.checkedDates || [];
+    // calc streak
+    let streak = 0, cur = new Date();
+    cur.setHours(0,0,0,0);
+    for(let i=0;i<90;i++){
+      const ds = `${cur.getFullYear()}-${String(cur.getMonth()+1).padStart(2,'0')}-${String(cur.getDate()).padStart(2,'0')}`;
+      if(dates.includes(ds)){streak++;cur.setDate(cur.getDate()-1);}
+      else if(i===0){cur.setDate(cur.getDate()-1);}
+      else break;
+    }
+    if(streak > 0) document.getElementById('trainDays').textContent = streak;
+    else document.getElementById('trainDays').textContent = dates.length || '—';
+  }
+} catch(e){}
+</script>
+</body>
+</html>
