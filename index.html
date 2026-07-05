@@ -107,9 +107,9 @@ nav{position:fixed;top:0;left:0;right:0;height:52px;background:rgba(244,244,242,
 .info-val{font-size:13px;color:var(--black);line-height:1.6;}
 
 /* ===== PROJECT IMAGE ===== */
-.project-img-wrap{display:block;width:100%;overflow:hidden;border-bottom:1px solid var(--border);text-decoration:none;}
-.project-img{width:100%;height:260px;object-fit:cover;object-position:top center;display:block;transition:transform .3s;}
-.project-img-wrap:hover .project-img{transform:scale(1.02);}
+.project-img-wrap{display:block;width:100%;overflow:hidden;border-bottom:1px solid var(--border);text-decoration:none;background:#1a1a1a;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;}
+.project-img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .3s;}
+.project-img-wrap:hover .project-img{transform:scale(1.03);}
 
 /* ===== PM FRAMEWORK ===== */
 .pm-framework{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1rem;}
