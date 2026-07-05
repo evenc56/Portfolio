@@ -17,7 +17,6 @@
   --green-l:#eaf4ef;
   --green-d:#0d3d28;
 }
-body{background:var(--bg);}
 html{scroll-behavior:smooth;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue','Segoe UI',sans-serif;background:var(--bg);color:var(--black);line-height:1.6;}
 
@@ -30,7 +29,7 @@ nav{position:fixed;top:0;left:0;right:0;height:52px;background:rgba(244,244,242,
 .nav-tab.active{color:var(--green);font-weight:500;}
 
 /* ===== PAGES ===== */
-.page{display:none;padding-top:52px;min-height:100vh;}
+.page{display:none;padding-top:52px;min-height:100vh;background:var(--bg);}
 .page.active{display:block;}
 
 /* ===== HOME PAGE ===== */
@@ -71,7 +70,7 @@ nav{position:fixed;top:0;left:0;right:0;height:52px;background:rgba(244,244,242,
 .iter-toggle:hover{color:var(--black);}
 .iter-toggle-arrow{font-size:11px;transition:transform .3s;}
 .iter-toggle.open .iter-toggle-arrow{transform:rotate(180deg);}
-.iter-body{display:none;padding:0 1rem 1rem;}
+.iter-body{display:none;padding:0 1rem 1rem;background:var(--card);}
 .iter-body.open{display:block;}
 .iter-item{padding:.75rem 0;border-bottom:1px solid var(--border);}
 .iter-item:last-child{border-bottom:none;}
@@ -108,9 +107,9 @@ nav{position:fixed;top:0;left:0;right:0;height:52px;background:rgba(244,244,242,
 .info-val{font-size:13px;color:var(--black);line-height:1.6;}
 
 /* ===== PROJECT IMAGE ===== */
-.project-img-wrap{display:block;width:100%;overflow:hidden;border-bottom:1px solid var(--border);text-decoration:none;}
-.project-img{width:100%;height:260px;object-fit:cover;object-position:top center;display:block;transition:transform .3s;}
-.project-img-wrap:hover .project-img{transform:scale(1.02);}
+.project-img-wrap{display:block;width:100%;overflow:hidden;border-bottom:1px solid var(--border);text-decoration:none;background:#1a1a1a;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;}
+.project-img{width:100%;height:100%;object-fit:contain;display:block;transition:transform .3s;}
+.project-img-wrap:hover .project-img{transform:scale(1.03);}
 
 /* ===== PM FRAMEWORK ===== */
 .pm-framework{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1rem;}
@@ -158,13 +157,60 @@ footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgr
   </div>
 
   <div class="projects-section">
-    <div class="section-label">作品</div>
+    <div class="section-label">Side Projects</div>
     <div class="projects-grid">
 
-    <!-- Project 1: Fitness App -->
+    <!-- Project 1: This Portfolio Website -->
+    <div class="project-card">
+      <a class="project-img-wrap" href="https://portfolio-jet-eta-99.vercel.app/" target="_blank">
+        <img class="project-img" src="https://raw.githubusercontent.com/evenc56/Portfolio/refs/heads/images/Screenshot%202026-07-05%20215545.png" alt="個人作品集網站截圖" />
+      </a>
+      <div style="padding:.5rem 1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:#fafafa;">
+        <span style="font-size:11px;color:var(--lightgray);">portfolio-jet-eta-99.vercel.app</span>
+        <a href="https://portfolio-jet-eta-99.vercel.app/" target="_blank" class="project-link" style="font-size:12px;">查看網站 →</a>
+      </div>
+      <div class="project-inner">
+        <div class="project-tags">
+          <span class="project-tag">網站設計</span>
+          <span class="project-tag">AI 協作</span>
+          <span class="project-tag">個人品牌</span>
+        </div>
+        <div class="project-name">個人 Side Project 作品集網站</div>
+        <div class="pm-framework">
+          <div class="pm-item">
+            <div class="pm-label">問題定義</div>
+            <div class="pm-text">需要一個更清楚的視覺呈現，在履歷之外，簡易展現與記錄自己的 side projects。</div>
+          </div>
+          <div class="pm-item">
+            <div class="pm-label">洞察</div>
+            <div class="pm-text">履歷是靜態的文字，沒辦法展示思考過程和迭代邏輯。善用 AI 工具，可以快速建立一個能持續更新的個人展示空間。</div>
+          </div>
+        </div>
+        <div class="project-stats">
+          <div class="project-stat">
+            <div class="project-stat-num">3+</div>
+            <div class="project-stat-label">作品收錄</div>
+          </div>
+          <div class="project-stat">
+            <div class="project-stat-num">AI</div>
+            <div class="project-stat-label">協作開發</div>
+          </div>
+          <div class="project-stat">
+            <div class="project-stat-num">↻</div>
+            <div class="project-stat-label">持續迭代</div>
+          </div>
+        </div>
+        <div class="project-footer">
+          <div class="project-status"><div class="status-dot"></div>持續更新中</div>
+          <a href="https://portfolio-jet-eta-99.vercel.app/" target="_blank" style="background:none;border:none;cursor:pointer;font-size:13px;font-weight:500;color:var(--green);font-family:inherit;padding:0;text-decoration:none;">你正在瀏覽此作品</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2: Fitness App -->
     <div class="project-card">
       <a class="project-img-wrap" href="https://my-fitness-app-chi.vercel.app/" target="_blank">
-        <img class="project-img" src="https://raw.githubusercontent.com/evenc56/Portfolio/refs/heads/images/Screenshot%202026-07-05%20164456.png" alt="個人健身復健 APP 截圖" />
+        <img class="project-img" src="https://raw.githubusercontent.com/evenc56/Portfolio/refs/heads/images/Screenshot%202026-07-05%20164456.png" alt="個人復健與肌力訓練網頁工具截圖" />
       </a>
       <div style="padding:.5rem 1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:#fafafa;">
         <span style="font-size:11px;color:var(--lightgray);">my-fitness-app-chi.vercel.app</span>
@@ -176,7 +222,7 @@ footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgr
           <span class="project-tag">數據追蹤</span>
           <span class="project-tag">AI 協作</span>
         </div>
-        <div class="project-name">個人健身復健 APP</div>
+        <div class="project-name">個人復健與肌力訓練網頁工具</div>
         <div class="pm-framework">
           <div class="pm-item">
             <div class="pm-label">問題定義</div>
@@ -208,10 +254,10 @@ footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgr
       </div>
     </div>
 
-    <!-- Project 2: Kansai Trip -->
+    <!-- Project 3: Kansai Trip -->
     <div class="project-card">
       <a class="project-img-wrap" href="https://kobe-osaka-8ds-maple-trip.netlify.app/" target="_blank">
-        <img class="project-img" src="https://raw.githubusercontent.com/evenc56/Portfolio/refs/heads/images/Screenshot%202026-07-05%20164616.png" alt="關西賞楓行程網頁截圖" />
+        <img class="project-img" src="https://raw.githubusercontent.com/evenc56/Portfolio/refs/heads/images/Screenshot%202026-07-05%20164616.png" alt="2025 秋 日本關西家族賞楓之旅 動態網頁截圖" />
       </a>
       <div style="padding:.5rem 1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:#fafafa;">
         <span style="font-size:11px;color:var(--lightgray);">kobe-osaka-8ds-maple-trip.netlify.app</span>
@@ -223,7 +269,7 @@ footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgr
           <span class="project-tag">使用者體驗</span>
           <span class="project-tag">AI 協作</span>
         </div>
-        <div class="project-name">關西賞楓行程網頁</div>
+        <div class="project-name">2025 秋 日本關西家族賞楓之旅 動態網頁</div>
         <div class="pm-framework">
           <div class="pm-item">
             <div class="pm-label">問題定義</div>
@@ -241,9 +287,8 @@ footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgr
       </div>
     </div>
 
-    </div><!-- end projects-grid -->
 
-    <!-- Project 3: CRM CLV Analysis -->
+    <!-- Project 4: CRM CLV Analysis -->
     <div class="project-card">
       <a class="project-img-wrap" href="https://github.com/evenc56/Customer_Relationship_Management" target="_blank">
         <img class="project-img" src="https://raw.githubusercontent.com/evenc56/Portfolio/refs/heads/images/Screenshot%202026-07-05%20175450.png" alt="禮品電商客戶生命週期分析截圖" />
@@ -290,8 +335,14 @@ footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgr
       </div>
     </div>
 
-    <div style="border:1px dashed var(--border);border-radius:12px;padding:1.5rem;text-align:center;color:var(--lightgray);margin-top:.5rem;">
-      <div style="font-size:13px;">更多作品持續更新中...</div>
+    </div><!-- end projects-grid -->
+
+
+
+    <div style="border:1px solid var(--border);border-radius:12px;padding:1.75rem 1.5rem;margin-top:.5rem;background:var(--card);">
+      <div style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:.4rem;">專業作品</div>
+      <div style="font-size:13px;color:var(--gray);line-height:1.75;margin-bottom:.9rem;">更多專業作品由於涉及敏感資料，歡迎直接與我聯絡，再依需求與您交流。</div>
+      <a href="mailto:evenggle5593@gmail.com" style="font-size:13px;color:var(--green);text-decoration:none;font-weight:500;">evenggle5593@gmail.com →</a>
     </div>
 
   </div>
@@ -308,7 +359,7 @@ footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgr
   <div style="max-width:680px;margin:0 auto;padding:2.5rem 2rem 4rem;">
     <button onclick="showPage('home')" style="background:none;border:none;cursor:pointer;font-size:13px;color:var(--gray);font-family:inherit;padding:0;margin-bottom:1.5rem;display:flex;align-items:center;gap:6px;">← 返回作品集</button>
     <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:.5rem;">迭代紀錄</div>
-    <h1 style="font-size:1.6rem;font-weight:700;letter-spacing:-.5px;margin-bottom:.4rem;">個人健身復健 APP</h1>
+    <h1 style="font-size:1.6rem;font-weight:700;letter-spacing:-.5px;margin-bottom:.4rem;">個人復健與肌力訓練網頁工具</h1>
     <p style="font-size:13px;color:var(--lightgray);margin-bottom:2rem;">從一個想法到持續運作的工具，記錄每一次修改背後的思考。</p>
 
     <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2.5rem;">
@@ -380,7 +431,7 @@ footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgr
   <div style="max-width:680px;margin:0 auto;padding:2.5rem 2rem 4rem;">
     <button onclick="showPage('home')" style="background:none;border:none;cursor:pointer;font-size:13px;color:var(--gray);font-family:inherit;padding:0;margin-bottom:1.5rem;display:flex;align-items:center;gap:6px;">← 返回作品集</button>
     <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:.5rem;">專案詳情</div>
-    <h1 style="font-size:1.6rem;font-weight:700;letter-spacing:-.5px;margin-bottom:.4rem;">關西賞楓行程網頁</h1>
+    <h1 style="font-size:1.6rem;font-weight:700;letter-spacing:-.5px;margin-bottom:.4rem;">2025 秋 日本關西家族賞楓之旅 動態網頁</h1>
     <p style="font-size:13px;color:var(--lightgray);margin-bottom:2rem;">為 65 歲以上長輩設計的互動式旅遊行程工具。</p>
 
     <div style="display:flex;flex-direction:column;gap:1.5rem;">
