@@ -7,20 +7,22 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --black:#111111;
-  --gray:#555555;
-  --lightgray:#999999;
-  --border:#e5e5e5;
-  --bg:#ffffff;
+  --black:#0f0f0f;
+  --gray:#4a4a4a;
+  --lightgray:#888888;
+  --border:#e0e0e0;
+  --bg:#f4f4f2;
+  --card:#ffffff;
   --green:#1a6b4a;
   --green-l:#eaf4ef;
   --green-d:#0d3d28;
 }
+body{background:var(--bg);}
 html{scroll-behavior:smooth;}
 body{font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue','Segoe UI',sans-serif;background:var(--bg);color:var(--black);line-height:1.6;}
 
 /* ===== NAV ===== */
-nav{position:fixed;top:0;left:0;right:0;height:52px;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;z-index:200;}
+nav{position:fixed;top:0;left:0;right:0;height:52px;background:rgba(244,244,242,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;z-index:200;}
 .nav-name{font-size:14px;font-weight:600;letter-spacing:-.2px;color:var(--black);text-decoration:none;}
 .nav-tabs{display:flex;gap:0;}
 .nav-tab{font-size:13px;color:var(--gray);text-decoration:none;padding:.4rem 1rem;border-radius:6px;transition:all .2s;cursor:pointer;border:none;background:none;font-family:inherit;}
@@ -32,18 +34,19 @@ nav{position:fixed;top:0;left:0;right:0;height:52px;background:rgba(255,255,255,
 .page.active{display:block;}
 
 /* ===== HOME PAGE ===== */
-.hero{padding:4rem 2rem 2.5rem;max-width:680px;margin:0 auto;}
+.hero{padding:4rem 2rem 2.5rem;max-width:960px;margin:0 auto;}
 .hero-tag{display:inline-block;font-size:11px;font-weight:600;color:var(--green);background:var(--green-l);padding:3px 10px;border-radius:20px;margin-bottom:1.25rem;letter-spacing:.8px;text-transform:uppercase;}
 .hero h1{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;letter-spacing:-1px;line-height:1.2;margin-bottom:.75rem;}
 .hero h1 span{color:var(--green);}
 .hero-desc{font-size:.95rem;color:var(--gray);max-width:500px;line-height:1.8;margin-bottom:.5rem;}
 
 /* ===== PROJECTS SECTION ===== */
-.projects-section{padding:0 2rem 4rem;max-width:680px;margin:0 auto;}
+.projects-section{padding:0 2rem 4rem;max-width:960px;margin:0 auto;}
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;align-items:start;}
 .section-label{font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:1.25rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);}
 
-.project-card{border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1rem;transition:box-shadow .2s,transform .2s;}
-.project-card:hover{box-shadow:0 4px 24px rgba(0,0,0,.07);transform:translateY(-1px);}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:1.25rem;transition:box-shadow .25s,transform .25s;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.project-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.12);transform:translateY(-2px);}
 .project-inner{padding:1.5rem;}
 .project-tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:.75rem;}
 .project-tag{font-size:10px;padding:2px 8px;border-radius:4px;background:var(--green-l);color:var(--green);font-weight:600;letter-spacing:.2px;}
@@ -62,6 +65,19 @@ nav{position:fixed;top:0;left:0;right:0;height:52px;background:rgba(255,255,255,
 .design-note-label{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;}
 .design-note-item{font-size:12px;color:var(--gray);line-height:1.6;display:flex;gap:6px;}
 .design-note-item::before{content:'·';color:var(--green);flex-shrink:0;}
+
+/* ===== ITERATION LOG ===== */
+.iter-toggle{width:100%;padding:.75rem 1rem;border:none;background:none;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-family:inherit;font-size:13px;color:var(--gray);transition:color .2s;}
+.iter-toggle:hover{color:var(--black);}
+.iter-toggle-arrow{font-size:11px;transition:transform .3s;}
+.iter-toggle.open .iter-toggle-arrow{transform:rotate(180deg);}
+.iter-body{display:none;padding:0 1rem 1rem;}
+.iter-body.open{display:block;}
+.iter-item{padding:.75rem 0;border-bottom:1px solid var(--border);}
+.iter-item:last-child{border-bottom:none;}
+.iter-ver{font-size:11px;font-weight:700;color:var(--green);margin-bottom:3px;letter-spacing:.5px;}
+.iter-title{font-size:13px;font-weight:600;color:var(--black);margin-bottom:3px;}
+.iter-desc{font-size:12px;color:var(--gray);line-height:1.65;}
 
 /* ===== ABOUT PAGE ===== */
 .about-page{padding:2.5rem 2rem 4rem;max-width:680px;margin:0 auto;}
@@ -91,6 +107,11 @@ nav{position:fixed;top:0;left:0;right:0;height:52px;background:rgba(255,255,255,
 .info-label{font-size:10px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:.3rem;}
 .info-val{font-size:13px;color:var(--black);line-height:1.6;}
 
+/* ===== PROJECT IMAGE ===== */
+.project-img-wrap{display:block;width:100%;overflow:hidden;border-bottom:1px solid var(--border);text-decoration:none;}
+.project-img{width:100%;height:260px;object-fit:cover;object-position:top center;display:block;transition:transform .3s;}
+.project-img-wrap:hover .project-img{transform:scale(1.02);}
+
 /* ===== PM FRAMEWORK ===== */
 .pm-framework{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1rem;}
 .pm-item{display:flex;gap:.75rem;}
@@ -106,11 +127,12 @@ nav{position:fixed;top:0;left:0;right:0;height:52px;background:rgba(255,255,255,
 
 footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgray);border-top:1px solid var(--border);}
 
-@media(max-width:600px){
+@media(max-width:700px){
   nav{padding:0 1rem;}
   .hero,.projects-section,.about-page{padding-left:1.25rem;padding-right:1.25rem;}
   .skills-grid,.info-grid{grid-template-columns:1fr;}
   .project-stats{gap:1rem;}
+  .projects-grid{grid-template-columns:1fr;}
 }
 </style>
 </head>
@@ -137,9 +159,17 @@ footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgr
 
   <div class="projects-section">
     <div class="section-label">作品</div>
+    <div class="projects-grid">
 
     <!-- Project 1: Fitness App -->
     <div class="project-card">
+      <a class="project-img-wrap" href="https://my-fitness-app-chi.vercel.app/" target="_blank">
+        <img class="project-img" src="https://raw.githubusercontent.com/evenc56/Portfolio/refs/heads/images/Screenshot%202026-07-05%20164456.png" alt="個人健身復健 APP 截圖" />
+      </a>
+      <div style="padding:.5rem 1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:#fafafa;">
+        <span style="font-size:11px;color:var(--lightgray);">my-fitness-app-chi.vercel.app</span>
+        <a href="https://my-fitness-app-chi.vercel.app/" target="_blank" class="project-link" style="font-size:12px;">查看產品 →</a>
+      </div>
       <div class="project-inner">
         <div class="project-tags">
           <span class="project-tag">產品設計</span>
@@ -150,48 +180,43 @@ footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgr
         <div class="pm-framework">
           <div class="pm-item">
             <div class="pm-label">問題定義</div>
-            <div class="pm-text">有特定傷況的人，像是術後復健或慢性關節不適，市面上的健身 APP 只能提供動作庫，沒辦法告訴你哪些動作適合你現在的狀況。我自己有右肩肌腱損傷和膝蓋問題，找不到合適的工具，就決定自己做一個。</div>
+            <div class="pm-text">有特定傷況的人，市面上的健身 APP 只能提供動作庫，沒辦法告訴你哪些動作適合你現在的狀況。</div>
           </div>
           <div class="pm-item">
             <div class="pm-label">洞察</div>
-            <div class="pm-text">原本以為需要的只是一套安全的動作清單。實際做了之後才發現，動作找到了，但要能持續做下去才是真正的難題。所以加了打卡和里程碑，讓自己看得到進度。</div>
-          </div>
-          <div class="pm-item">
-            <div class="pm-label">解決方案</div>
-            <div class="pm-text">固定課表減少每次要想做什麼的麻煩，打卡記錄讓進步有憑有據，雙週動作評估追蹤身體實際的改變。</div>
-          </div>
-          <div class="pm-item">
-            <div class="pm-label">結果</div>
-            <div class="pm-text">連續訓練 X 天，第 5 天起膝蓋不適就開始有感改善。</div>
-          </div>
-          <div class="pm-item pm-future">
-            <div class="pm-label">未來方向</div>
-            <div class="pm-text">目前為自己量身打造，但同樣有復健需求的族群其實不少，像是術後恢復期、中高齡想開始運動但怕受傷的人。下一步計畫開放多人使用，並根據不同傷況提供個人化課表。</div>
+            <div class="pm-text">動作找到了，但要能持續做下去才是真正的難題。</div>
           </div>
         </div>
         <div class="project-stats">
-          <div class="project-stat">
-            <div class="project-stat-num" id="trainDays">—</div>
-            <div class="project-stat-label">連續訓練天數</div>
-          </div>
           <div class="project-stat">
             <div class="project-stat-num">13</div>
             <div class="project-stat-label">個訓練動作</div>
           </div>
           <div class="project-stat">
-            <div class="project-stat-num">↑</div>
-            <div class="project-stat-label">膝蓋不適明顯改善</div>
+            <div class="project-stat-num">6</div>
+            <div class="project-stat-label">個里程碑</div>
+          </div>
+          <div class="project-stat">
+            <div class="project-stat-num">v5</div>
+            <div class="project-stat-label">迭代版本</div>
           </div>
         </div>
         <div class="project-footer">
           <div class="project-status"><div class="status-dot"></div>持續迭代中</div>
-          <a href="https://my-fitness-app-chi.vercel.app/" target="_blank" class="project-link">查看產品 →</a>
+          <button onclick="showPage('fitness-story')" style="background:none;border:none;cursor:pointer;font-size:13px;font-weight:500;color:var(--green);font-family:inherit;padding:0;">深入瞭解 →</button>
         </div>
       </div>
     </div>
 
     <!-- Project 2: Kansai Trip -->
     <div class="project-card">
+      <a class="project-img-wrap" href="https://kobe-osaka-8ds-maple-trip.netlify.app/" target="_blank">
+        <img class="project-img" src="https://raw.githubusercontent.com/evenc56/Portfolio/refs/heads/images/Screenshot%202026-07-05%20164616.png" alt="關西賞楓行程網頁截圖" />
+      </a>
+      <div style="padding:.5rem 1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:#fafafa;">
+        <span style="font-size:11px;color:var(--lightgray);">kobe-osaka-8ds-maple-trip.netlify.app</span>
+        <a href="https://kobe-osaka-8ds-maple-trip.netlify.app/" target="_blank" class="project-link" style="font-size:12px;">查看網頁 →</a>
+      </div>
       <div class="project-inner">
         <div class="project-tags">
           <span class="project-tag">視覺設計</span>
@@ -202,30 +227,70 @@ footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgr
         <div class="pm-framework">
           <div class="pm-item">
             <div class="pm-label">問題定義</div>
-            <div class="pm-text">帶五位 65 歲以上的長輩去日本，文字行程他們看不太懂，每次要解釋去哪、怎麼走都要花很多時間。</div>
+            <div class="pm-text">帶五位 65 歲以上的長輩去日本，文字行程他們看不太懂，每次解釋去哪、怎麼走都要花很多時間。</div>
           </div>
           <div class="pm-item">
             <div class="pm-label">洞察</div>
-            <div class="pm-text">長輩不需要知道完整行程，只需要知道現在在哪、接下來去哪。另外家裡不只一個家庭單位，如果有個連結可以傳，各自的家人也能自己看，不用靠我一個一個說明。</div>
-          </div>
-          <div class="pm-item">
-            <div class="pm-label">解決方案</div>
-            <div class="pm-text">做成網頁，用衛星地圖讓位置感更直覺，配色選紅色呼應日本風格，icon 選簡潔好辨識的款式，讓長輩一看就懂。</div>
-          </div>
-          <div class="pm-item">
-            <div class="pm-label">結果</div>
-            <div class="pm-text">五位長輩全程可以自己查，幾個家庭各自用連結了解行程，不需要我在旁邊解釋。</div>
+            <div class="pm-text">長輩不需要完整行程，只需要知道現在在哪、接下來去哪。</div>
           </div>
         </div>
         <div class="project-footer" style="margin-top:.75rem;">
           <div class="project-status">5 位長輩使用者</div>
-          <a href="https://kobe-osaka-8ds-maple-trip.netlify.app/" target="_blank" class="project-link">查看網頁 →</a>
+          <button onclick="showPage('kansai-story')" style="background:none;border:none;cursor:pointer;font-size:13px;font-weight:500;color:var(--green);font-family:inherit;padding:0;">深入瞭解 →</button>
         </div>
       </div>
     </div>
 
-    <!-- Placeholder -->
-    <div style="border:1px dashed var(--border);border-radius:12px;padding:1.5rem;text-align:center;color:var(--lightgray);">
+    </div><!-- end projects-grid -->
+
+    <!-- Project 3: CRM CLV Analysis -->
+    <div class="project-card">
+      <a class="project-img-wrap" href="https://github.com/evenc56/Customer_Relationship_Management" target="_blank">
+        <img class="project-img" src="https://raw.githubusercontent.com/evenc56/Portfolio/refs/heads/images/Screenshot%202026-07-05%20175450.png" alt="禮品電商客戶生命週期分析截圖" />
+      </a>
+      <div style="padding:.5rem 1rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;background:#fafafa;">
+        <span style="font-size:11px;color:var(--lightgray);">github.com/evenc56</span>
+        <a href="https://github.com/evenc56/Customer_Relationship_Management" target="_blank" class="project-link" style="font-size:12px;">查看 GitHub →</a>
+      </div>
+      <div class="project-inner">
+        <div class="project-tags">
+          <span class="project-tag">數據分析</span>
+          <span class="project-tag">Python</span>
+          <span class="project-tag">消費者行為</span>
+        </div>
+        <div class="project-name">禮品電商客戶生命週期分析</div>
+        <div class="pm-framework">
+          <div class="pm-item">
+            <div class="pm-label">問題定義</div>
+            <div class="pm-text">對消費者行為分析有興趣，想了解如何用數據計算客戶生命週期價值，剛好在學 Python，決定把兩件事結合起來實作。</div>
+          </div>
+          <div class="pm-item">
+            <div class="pm-label">洞察</div>
+            <div class="pm-text">資料清理往往比分析本身花更多時間，光決定鎖定哪個期間、哪個市場，就需要一連串的判斷和取捨。</div>
+          </div>
+        </div>
+        <div class="project-stats">
+          <div class="project-stat">
+            <div class="project-stat-num">54萬</div>
+            <div class="project-stat-label">筆銷售資料</div>
+          </div>
+          <div class="project-stat">
+            <div class="project-stat-num">38</div>
+            <div class="project-stat-label">個國家客源</div>
+          </div>
+          <div class="project-stat">
+            <div class="project-stat-num">1.5%</div>
+            <div class="project-stat-label">客戶流失率</div>
+          </div>
+        </div>
+        <div class="project-footer">
+          <div class="project-status">2021 自學專案</div>
+          <button onclick="showPage('crm-story')" style="background:none;border:none;cursor:pointer;font-size:13px;font-weight:500;color:var(--green);font-family:inherit;padding:0;">深入瞭解 →</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="border:1px dashed var(--border);border-radius:12px;padding:1.5rem;text-align:center;color:var(--lightgray);margin-top:.5rem;">
       <div style="font-size:13px;">更多作品持續更新中...</div>
     </div>
 
@@ -236,6 +301,157 @@ footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgr
     <a href="mailto:evenggle5593@gmail.com" class="contact-email">evenggle5593@gmail.com</a>
   </div>
   <footer>© 2025 Even Chen · Built with intention, iterated daily.</footer>
+</div>
+
+<!-- ===== FITNESS STORY PAGE ===== -->
+<div class="page" id="page-fitness-story">
+  <div style="max-width:680px;margin:0 auto;padding:2.5rem 2rem 4rem;">
+    <button onclick="showPage('home')" style="background:none;border:none;cursor:pointer;font-size:13px;color:var(--gray);font-family:inherit;padding:0;margin-bottom:1.5rem;display:flex;align-items:center;gap:6px;">← 返回作品集</button>
+    <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:.5rem;">迭代紀錄</div>
+    <h1 style="font-size:1.6rem;font-weight:700;letter-spacing:-.5px;margin-bottom:.4rem;">個人健身復健 APP</h1>
+    <p style="font-size:13px;color:var(--lightgray);margin-bottom:2rem;">從一個想法到持續運作的工具，記錄每一次修改背後的思考。</p>
+
+    <div style="display:flex;flex-direction:column;gap:1.5rem;margin-bottom:2.5rem;">
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;">問題定義</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">有特定傷況的人，像是術後復健或慢性關節不適，市面上的健身 APP 只能提供動作庫，沒辦法告訴你哪些動作適合你現在的狀況。我自己有右肩肌腱損傷和膝蓋問題，找不到合適的工具，就決定自己做一個。</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;">洞察</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">原本以為需要的只是一套安全的動作清單。實際做了之後才發現，動作找到了，但要能持續做下去才是真正的難題。所以加了打卡和里程碑，讓自己看得到進度。</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;">解決方案</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">固定課表減少每次要想做什麼的麻煩，打卡記錄讓進步有憑有據，雙週動作評估追蹤身體實際的改變。</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;">結果</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">連續訓練數週，第 5 天起膝蓋不適就開始有感改善，持續追蹤中。</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:.4rem;">未來方向</div>
+        <div style="font-size:13px;color:var(--lightgray);line-height:1.8;">目前為自己量身打造，但同樣有復健需求的族群其實不少，像是術後恢復期、中高齡想開始運動但怕受傷的人。下一步計畫開放多人使用，並根據不同傷況提供個人化課表。</div>
+      </div>
+    </div>
+
+    <div style="font-size:13px;font-weight:600;color:var(--black);margin-bottom:1rem;padding-top:1.5rem;border-top:1px solid var(--border);">迭代紀錄</div>
+    <div style="border-left:2px solid var(--border);padding-left:1.5rem;">
+
+      <div style="margin-bottom:2rem;">
+        <div style="font-size:11px;font-weight:700;color:var(--green);letter-spacing:.5px;margin-bottom:4px;">v1 — 基礎課表</div>
+        <div style="font-size:16px;font-weight:600;margin-bottom:.5rem;">建立復健動作課表</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">針對右肩肌腱損傷（PRP 術後）與膝蓋不適，挑選 13 個安全動作。每個動作串接 YouTube 示範影片，加入語音口播引導，讓使用者不需要看螢幕也能完成訓練。</div>
+      </div>
+
+      <div style="margin-bottom:2rem;">
+        <div style="font-size:11px;font-weight:700;color:var(--green);letter-spacing:.5px;margin-bottom:4px;">v2 — 打卡與目標</div>
+        <div style="font-size:16px;font-weight:600;margin-bottom:.5rem;">讓進度可見</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">做了幾天之後發現，動作找到了，要持續做下去才是真正的難題。加入打卡月曆、連續天數、里程碑時間表，把身體改善的過程轉化為可見的進度。</div>
+      </div>
+
+      <div style="margin-bottom:2rem;">
+        <div style="font-size:11px;font-weight:700;color:var(--green);letter-spacing:.5px;margin-bottom:4px;">v3 — 數據串接</div>
+        <div style="font-size:16px;font-weight:600;margin-bottom:.5rem;">身體改善可量化</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">每日評估從四個選項改為 1-10 分滑桿，加入開放式文字紀錄，串接 Google Sheets 自動儲存。目的是讓每天的感受都有數據，而不只是主觀印象。</div>
+      </div>
+
+      <div style="margin-bottom:2rem;">
+        <div style="font-size:11px;font-weight:700;color:var(--green);letter-spacing:.5px;margin-bottom:4px;">v4 — 動作評估</div>
+        <div style="font-size:16px;font-weight:600;margin-bottom:.5rem;">雙週動作測試機制</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">新增每月 1 號與 15 號的動作評估頁面，包含單腳站立秒數、肩膀活動度距離、臀肌啟動感受等測試，讓身體改變有更客觀的數據可以對照。</div>
+      </div>
+
+      <div style="margin-bottom:2rem;">
+        <div style="font-size:11px;font-weight:700;color:var(--green);letter-spacing:.5px;margin-bottom:4px;">v5 — 體驗優化</div>
+        <div style="font-size:16px;font-weight:600;margin-bottom:.5rem;">使用流程更直覺</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">首頁改為目標頁，進來先看到里程碑和「開始訓練」按鈕。影片改為縮圖點擊載入，避免黑屏。口播語序調整為先說小單位再說大單位，符合中文語感。新增補打卡功能，里程碑加入最低訓練頻率門檻。</div>
+      </div>
+
+    </div>
+
+    <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+      <a href="https://my-fitness-app-chi.vercel.app/" target="_blank" style="display:inline-block;padding:10px 20px;background:var(--black);color:white;border-radius:6px;font-size:13px;font-weight:500;text-decoration:none;">查看產品 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== KANSAI STORY PAGE ===== -->
+<div class="page" id="page-kansai-story">
+  <div style="max-width:680px;margin:0 auto;padding:2.5rem 2rem 4rem;">
+    <button onclick="showPage('home')" style="background:none;border:none;cursor:pointer;font-size:13px;color:var(--gray);font-family:inherit;padding:0;margin-bottom:1.5rem;display:flex;align-items:center;gap:6px;">← 返回作品集</button>
+    <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:.5rem;">專案詳情</div>
+    <h1 style="font-size:1.6rem;font-weight:700;letter-spacing:-.5px;margin-bottom:.4rem;">關西賞楓行程網頁</h1>
+    <p style="font-size:13px;color:var(--lightgray);margin-bottom:2rem;">為 65 歲以上長輩設計的互動式旅遊行程工具。</p>
+
+    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;">問題定義</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:.4rem;">長輩看不懂文字行程</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">帶五位 65 歲以上的長輩去日本關西賞楓，文字行程對他們閱讀負擔大，每次解釋去哪、怎麼走都要花很多時間。出發前我一個人不到 40 歲，其餘五人都是長輩，溝通成本相當高。</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;">洞察</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:.4rem;">不需要完整行程，只需要方向感</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">長輩不需要知道完整行程細節，只需要知道現在在哪、接下來去哪。另外家裡不只一個家庭單位，如果有個連結可以傳，各自的家人也能自己看，不用靠我一個一個說明。</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;">解決方案</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:.4rem;">每個設計決策都有原因</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">做成互動式網頁，幾個關鍵設計決策：</div>
+        <div style="margin-top:.75rem;display:flex;flex-direction:column;gap:.6rem;">
+          <div style="padding:.75rem;background:#f8f8f8;border-radius:8px;font-size:13px;color:var(--gray);line-height:1.65;"><strong style="color:var(--black);">衛星地圖</strong>：讓位置感更直覺，長輩能對照真實地理環境，不需要解讀抽象的路線圖。</div>
+          <div style="padding:.75rem;background:#f8f8f8;border-radius:8px;font-size:13px;color:var(--gray);line-height:1.65;"><strong style="color:var(--black);">紅色主色調</strong>：呼應日本國旗，視覺識別度高，也符合日本行的整體氛圍。</div>
+          <div style="padding:.75rem;background:#f8f8f8;border-radius:8px;font-size:13px;color:var(--gray);line-height:1.65;"><strong style="color:var(--black);">大型簡潔 icon</strong>：優先考量 65 歲以上使用者的辨識需求，清晰勝於裝飾。</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;">結果</div>
+        <div style="font-size:15px;font-weight:600;margin-bottom:.4rem;">五位長輩全程自主查閱</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">五位長輩全程可以自己查，幾個家庭各自用連結了解行程，不需要我在旁邊解釋。大幅降低了溝通負擔，每個人都掌握自己的行程方向。</div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--border);">
+      <a href="https://kobe-osaka-8ds-maple-trip.netlify.app/" target="_blank" style="display:inline-block;padding:10px 20px;background:var(--black);color:white;border-radius:6px;font-size:13px;font-weight:500;text-decoration:none;">查看網頁 →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== CRM STORY PAGE ===== -->
+<div class="page" id="page-crm-story">
+  <div style="max-width:680px;margin:0 auto;padding:2.5rem 2rem 4rem;">
+    <button onclick="showPage('home')" style="background:none;border:none;cursor:pointer;font-size:13px;color:var(--gray);font-family:inherit;padding:0;margin-bottom:1.5rem;display:flex;align-items:center;gap:6px;">← 返回作品集</button>
+    <div style="font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--lightgray);margin-bottom:.5rem;">專案詳情</div>
+    <h1 style="font-size:1.6rem;font-weight:700;letter-spacing:-.5px;margin-bottom:.4rem;">禮品電商客戶生命週期分析</h1>
+    <p style="font-size:13px;color:var(--lightgray);margin-bottom:2rem;">2021 年自學專案・用 Python 分析 54 萬筆真實銷售資料</p>
+
+    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;">問題定義</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">對消費者行為分析有興趣，想了解如何用數據計算客戶生命週期價值（CLV）。當時剛在學 Python，決定把兩件事結合起來，用真實的電商銷售資料實作。</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;">洞察</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">資料清理往往比分析本身花更多時間。54 萬筆資料中，光是決定要鎖定哪個期間、哪個市場，就需要一連串的判斷和取捨——這個過程本身就是分析能力的展現。</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;">解決方案</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">使用 Python 處理 Kaggle 的真實英國零售商資料，完成資料清理、CLV 計算、英國客戶分析，並整理成完整的分析簡報。撰寫原則是用最簡單易懂的程式碼，避免複雜累贅的寫法。</div>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--green);margin-bottom:.4rem;">結果</div>
+        <div style="font-size:13px;color:var(--gray);line-height:1.8;">客戶流失率 1.5%，30% 客戶 CLV 落在台幣 4.6–9.4 萬之間，9–11 月為銷售旺季，11 月金額為月平均的 2.5 個標準差以上，研判為年末促銷與聖誕節效應。</div>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem;padding:.9rem 1rem;background:#f8f8f8;border-radius:8px;font-size:12px;color:var(--lightgray);line-height:1.7;">
+      備註：這是 2021 年的自學專案，Python 技術細節已生疏。現以 AI 協作方式持續應用數據分析能力於實際工作中。
+    </div>
+
+    <div style="margin-top:1.5rem;display:flex;gap:.75rem;">
+      <a href="https://github.com/evenc56/Customer_Relationship_Management" target="_blank" style="display:inline-block;padding:10px 20px;background:var(--black);color:white;border-radius:6px;font-size:13px;font-weight:500;text-decoration:none;">查看 GitHub →</a>
+    </div>
+  </div>
 </div>
 
 <!-- ===== ABOUT PAGE ===== -->
@@ -349,32 +565,23 @@ footer{padding:1.25rem 2rem;text-align:center;font-size:11px;color:var(--lightgr
 </div>
 
 <script>
+function toggleIter(id) {
+  const btn = document.getElementById('iter-btn-' + id);
+  const body = document.getElementById('iter-body-' + id);
+  btn.classList.toggle('open');
+  body.classList.toggle('open');
+}
+
 function showPage(id) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
   document.getElementById('page-' + id).classList.add('active');
-  document.getElementById('tab-' + id).classList.add('active');
+  const tab = document.getElementById('tab-' + id);
+  if(tab) tab.classList.add('active');
   window.scrollTo(0, 0);
 }
 
-// Pull training streak from fitness app localStorage
-try {
-  const data = localStorage.getItem('fitness-app-v2');
-  if (data) {
-    const parsed = JSON.parse(data);
-    const dates = parsed.checkedDates || [];
-    let streak = 0, cur = new Date();
-    cur.setHours(0,0,0,0);
-    for (let i = 0; i < 90; i++) {
-      const ds = `${cur.getFullYear()}-${String(cur.getMonth()+1).padStart(2,'0')}-${String(cur.getDate()).padStart(2,'0')}`;
-      if (dates.includes(ds)) { streak++; cur.setDate(cur.getDate()-1); }
-      else if (i === 0) { cur.setDate(cur.getDate()-1); }
-      else break;
-    }
-    const el = document.getElementById('trainDays');
-    if (el) el.textContent = streak > 0 ? streak : (dates.length || '—');
-  }
-} catch(e) {}
+// stats from localStorage removed
 </script>
 </body>
 </html>
